@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pizza Store</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Pizza Store</h1>
+    <nav>
+      <a href="/items/new">Add New Pizza</a>
+    </nav>
+  </header>
+  <main>
+    <h2>Pizza List</h2>
+    <ul>
+      <% pizzas.forEach(pizza => { %>
+        <li>
+          <%= pizza.name %> - $<%= pizza.price.toFixed(2) %>
+          <a href="/items/<%= pizza._id %>/edit">Edit</a>
+          <form action="/items/<%= pizza._id %>?_method=DELETE" method="POST" style="display:inline;">
+            <button type="submit">Delete</button>
+          </form>
+        </li>
+      <% }) %>
+    </ul>
+  </main>
+</body>
+</html>
